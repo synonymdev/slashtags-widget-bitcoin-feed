@@ -1,0 +1,148 @@
+{
+    "name": "Bitcoin Info",
+    "description": "Up to date information about Bitcoin",
+    "icons": {
+        "48": "/images/bitcoin.svg",
+        "96": "/images/bitcoin.svg",
+        "104": "/images/bitcoin.svg"
+    },
+    "type": "simple.values",
+    "version": "0.0.1",
+    "fields": [
+        {
+            "name": "Block Height",
+            "description": "The current blockheight",
+            "main": "/feed/height",
+            "files": {
+                "main": "/feed/height"
+            },
+            "key": "height"
+        },
+        {
+            "name": "Last Block Time",
+            "description": "The time that the last block was mined",
+            "main": "/feed/timestamp",
+            "files": {
+                "main": "/feed/timestamp"
+            },
+            "key": "timestamp"
+        },
+        {
+            "name": "Transaction Count",
+            "description": "The number of transactions in the last block",
+            "main": "/feed/transactionCount",
+            "files": {
+                "main": "/feed/transactionCount"
+            },
+            "key": "transactionCount"
+        },
+        {
+            "name": "Block Size",
+            "description": "The size of the last block",
+            "main": "/feed/size",
+            "files": {
+                "main": "/feed/size"
+            },
+            "key": "size"
+        },
+        {
+            "name": "Block Weight",
+            "description": "The weight of the last block",
+            "main": "/feed/weight",
+            "files": {
+                "main": "/feed/weight"
+            },
+            "key": "weight"
+        },
+        {
+            "name": "Difficulty",
+            "description": "The current mining difficulty",
+            "main": "/feed/difficulty",
+            "files": {
+                "main": "/feed/difficulty"
+            },
+            "key": "difficulty"
+        },
+        {
+            "name": "Merkle Root",
+            "description": "The Merkle Root of the last block",
+            "main": "/feed/merkleRoot",
+            "files": {
+                "main": "/feed/merkleRoot"
+            },
+            "key": "merkleRoot"
+        },
+        {
+            "name": "Mempool Transactions",
+            "description": "The number of transactions waiting in the mempool",
+            "main": "/feed/mempoolTransactions",
+            "files": {
+                "main": "/feed/mempoolTransactions"
+            },
+            "key": "mempoolTransactions"
+        },
+        {
+            "name": "Mempool Size",
+            "description": "The size of the current mempool",
+            "main": "/feed/mempoolSize",
+            "files": {
+                "main": "/feed/mempoolSize"
+            },
+            "key": "mempoolSize"
+        },
+        {
+            "name": "Mempool Total Fees",
+            "description": "The value of the fees for transactions in the mempool",
+            "main": "/feed/mempoolTotalFees",
+            "files": {
+                "main": "/feed/mempoolTotalFees"
+            },
+            "key": "mempoolTotalFees"
+        },
+        {
+            "name": "Fee Estimate, Next Block",
+            "description": "The estimated fee needed to get into the next block",
+            "main": "/feed/mempoolNextFee",
+            "files": {
+                "main": "/feed/mempoolNextFee"
+            },
+            "key": "mempoolNextFee"
+        },
+        {
+            "name": "Fee Estimate, 30m",
+            "description": "The estimated fee needed to get into a block in the next 30 minutes",
+            "main": "/feed/mempool30mFee",
+            "files": {
+                "main": "/feed/mempool30mFee"
+            },
+            "key": "mempool30mFee"
+        },
+        {
+            "name": "Fee Estimate, 60m",
+            "description": "The estimated fee needed to get into a block in the next hour",
+            "main": "/feed/mempool60mFee",
+            "files": {
+                "main": "/feed/mempool60mFee"
+            },
+            "key": "mempool60mFee"
+        },
+        {
+            "name": "Fee Estimate, Slow",
+            "description": "The estimated fee needed to get into a block cheaply",
+            "main": "/feed/mempoolSlowFee",
+            "files": {
+                "main": "/feed/mempoolSlowFee"
+            },
+            "key": "mempoolSlowFee"
+        },
+        {
+            "name": "Fee Estimate, Min",
+            "description": "The estimated fee needed to get into a block eventually",
+            "main": "/feed/mempoolMinFee",
+            "files": {
+                "main": "/feed/mempoolMinFee"
+            },
+            "key": "mempoolMinFee"
+        }
+    ]
+}
