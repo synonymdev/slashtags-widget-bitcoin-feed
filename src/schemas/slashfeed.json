@@ -32,21 +32,21 @@
             "name": "Block Size",
             "description": "The size of the last block",
             "main": "/feed/size",
-            "units": "b",
+            "units": "Kb",
             "key": "size"
         },
         {
             "name": "Block Weight",
             "description": "The weight of the last block",
             "main": "/feed/weight",
-            "units": "WU",
+            "units": "MWU",
             "key": "weight"
         },
         {
             "name": "Difficulty",
             "description": "The current mining difficulty",
             "main": "/feed/difficulty",
-            "units": "H/b",
+            "units": "TH/b",
             "key": "difficulty"
         },
         {
@@ -67,7 +67,7 @@
             "name": "Mempool Size",
             "description": "The size of the current mempool",
             "main": "/feed/mempoolSize",
-            "units": "bytes",
+            "units": "vB",
             "key": "mempoolSize"
         },
         {
