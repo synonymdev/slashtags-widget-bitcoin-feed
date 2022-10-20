@@ -8,6 +8,13 @@
     "version": "0.0.1",
     "fields": [
         {
+            "name": "Last Block",
+            "description": "Information about the last block mined",
+            "main": "/feed/lastBlock",
+            "units": "",
+            "key": "lastBlock"
+        },
+        {
             "name": "Block Height",
             "description": "The current blockheight",
             "main": "/feed/height",
