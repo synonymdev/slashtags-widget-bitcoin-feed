@@ -120,6 +120,19 @@ export default class BitcoinFeeds {
             await this._writeValue('weight', `${weight}`)
             await this._writeValue('difficulty', `${difficulty}`)
             await this._writeValue('merkleRoot', `${blockInfo.merkle_root}`)
+
+            // and the aggregate
+            await this._writeValue('lastBlock', {
+                height: blockInfo.height,
+                timestamp: blockInfo.timestamp,
+                transactionCount: blockInfo.tx_count,
+                size,
+                weight,
+                difficulty,
+                hash,
+                merkleRoot: blockInfo.merkle_root
+            })
+
         } catch (err) {
             logger.error(err)
         }
@@ -158,11 +171,11 @@ export default class BitcoinFeeds {
 
         // fetch the current value and only update if it is different
         const existingValue = await this.feedStorage.get(this.driveId, key)
-        if (existingValue === value) {
+        if (JSON.stringify(existingValue) === JSON.stringify(value)) {
             return
         }
 
-        logger.info(`Updating ${key} = ${value}`)
+        logger.info(`Updating ${key} = ${JSON.stringify(value)}`)
         await this.feedStorage.update(this.driveId, key, value)
     }
 
