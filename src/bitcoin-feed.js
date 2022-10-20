@@ -110,12 +110,15 @@ export default class BitcoinFeeds {
                 return
             }
 
+            const difficulty = (blockInfo.difficulty / 1000000000000).toFixed(2)
+            const size = (blockInfo.size / 1024).toFixed(2)
+            const weight = (blockInfo.weight / 1024 / 1024).toFixed(2)
             await this._writeValue('height', `${blockInfo.height}`)
             await this._writeValue('timestamp', `${blockInfo.timestamp}`)
             await this._writeValue('transactionCount', `${blockInfo.tx_count}`)
-            await this._writeValue('size', `${blockInfo.size}`)
-            await this._writeValue('weight', `${blockInfo.weight}`)
-            await this._writeValue('difficulty', `${blockInfo.difficulty}`)
+            await this._writeValue('size', `${size}`)
+            await this._writeValue('weight', `${weight}`)
+            await this._writeValue('difficulty', `${difficulty}`)
             await this._writeValue('merkleRoot', `${blockInfo.merkle_root}`)
         } catch (err) {
             logger.error(err)
