@@ -16,6 +16,7 @@ module.exports = {
             args: [
                 '--color',
             ],
+            max_memory_restart: "400M",
         },
     ],
 };

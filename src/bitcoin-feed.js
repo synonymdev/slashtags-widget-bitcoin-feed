@@ -4,25 +4,6 @@ import { format, encode } from '@synonymdev/slashtags-url'
 import axios from 'axios'
 import logger from './logger.js'
 
-class CustomFeeds extends Feeds {
-    /**
-     * Ensures a file exists and writes it if missing or out of date
-     * @param {string} feedID
-     * @param {string} key
-     * @param {SerializableItem} value
-     */
-    async ensureFile(feedID, key, data) {
-        const drive = await this._drive(feedID)
-        const batch = drive.batch()
-        const existing = await batch.get(key)
-        if (existing && existing.equals(data)) {
-            return batch.flush()
-        }
-
-        await batch.put(key, data)
-        await batch.flush()
-    }
-}
 
 export default class BitcoinFeeds {
     constructor(config, schema) {
@@ -40,7 +21,7 @@ export default class BitcoinFeeds {
         }
 
         // Set up the storage for the feeds
-        this.feedStorage = new CustomFeeds(this.config.storagePath, this.schema)
+        this.feedStorage = new Feeds(this.config.storagePath, this.schema)
 
         // ensure a drive has been created for our feeds and announce it - gets the keys back
         const driveKeys = await this.feedStorage.feed(this.driveId, { announce: true })
@@ -70,6 +51,23 @@ export default class BitcoinFeeds {
 
     async stop() {
         clearTimeout(this.timer)
+    }
+
+
+    async getFilenames(path) {
+        return new Promise(async (resolve) => {
+            const drive = await this.feedStorage._drive(this.driveId)
+            const files = await drive.readdir(path)
+
+            const all = []
+            files.on('data', function (data) {
+                all.push(data)
+            })
+
+            files.on('end', function () {
+                resolve(all)
+            })
+        })
     }
 
     ////////////////////////////////////////////////////
