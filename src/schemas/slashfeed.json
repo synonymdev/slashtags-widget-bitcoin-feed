@@ -1,5 +1,5 @@
 {
-    "name": "Bitcoin Info",
+    "name": "Bitcoin Blocks",
     "description": "Up to date information about the Bitcoin blockchain",
     "icons": {
         "104": "/images/bitcoin.svg"
