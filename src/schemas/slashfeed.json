@@ -1,6 +1,6 @@
 {
     "name": "Bitcoin Blocks",
-    "description": "Up to date information about the Bitcoin blockchain",
+    "description": "Examine various statistics on newly mined Bitcoin Blocks.",
     "icons": {
         "104": "/images/bitcoin.svg"
     },
