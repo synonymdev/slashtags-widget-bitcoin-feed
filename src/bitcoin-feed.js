@@ -136,6 +136,7 @@ export default class BitcoinFeeds {
         }
     }
 
+    // NOTE: all fields disabled via schema
     async _updateMempool() {
         try {
             // Find out about the current mempool state
