@@ -2,7 +2,8 @@
     "name": "Bitcoin Blocks",
     "description": "Examine various statistics on newly mined Bitcoin Blocks.",
     "icons": {
-        "104": "/images/bitcoin.svg"
+        "48": "/images/block.svg",
+        "96": "/images/block.svg"
     },
     "type": "bitcoin.stats",
     "version": "0.0.1",

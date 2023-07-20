@@ -26,8 +26,8 @@ export default class BitcoinFeeds {
         const driveKeys = await this.feedStorage.feed(this.driveId, { announce: true })
 
         // Write the images into the feed
-        const imageData = fs.readFileSync('./src/schemas/images/bitcoin.svg')
-        await this.feedStorage.ensureFile(this.driveId, '/images/bitcoin.svg', imageData)
+        const imageData = fs.readFileSync('./src/schemas/images/block.svg')
+        await this.feedStorage.ensureFile(this.driveId, '/images/block.svg', imageData)
 
         // this is the hyperdrive that will contain all the feed data
         const url = format(driveKeys.key, { protocol: 'slashfeed:', fragment: { encryptionKey: encode(driveKeys.encryptionKey) } })
