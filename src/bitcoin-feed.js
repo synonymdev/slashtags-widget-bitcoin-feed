@@ -4,7 +4,6 @@ import { format, encode } from '@synonymdev/slashtags-url'
 import axios from 'axios'
 import logger from './logger.js'
 
-
 export default class BitcoinFeeds {
     constructor(config, schema) {
         this.config = config
@@ -52,7 +51,6 @@ export default class BitcoinFeeds {
     async stop() {
         clearTimeout(this.timer)
     }
-
 
     async getFilenames(path) {
         return new Promise(async (resolve) => {
@@ -128,9 +126,8 @@ export default class BitcoinFeeds {
                 weight,
                 difficulty,
                 hash,
-                merkleRoot: blockInfo.merkle_root
+                merkleRoot: blockInfo.merkle_root,
             })
-
         } catch (err) {
             logger.error(err)
         }
@@ -180,7 +177,7 @@ export default class BitcoinFeeds {
 
     _msToNextUnit(unit) {
         const now = Date.now()
-        const nextUnitStartsAt = Math.floor((Math.ceil(now / unit) * unit))
+        const nextUnitStartsAt = Math.floor(Math.ceil(now / unit) * unit)
 
         return nextUnitStartsAt - now
     }
