@@ -116,6 +116,7 @@ export default class BitcoinFeeds {
             await this._writeValue('weight', `${weight}`)
             await this._writeValue('difficulty', `${difficulty}`)
             await this._writeValue('merkleRoot', `${blockInfo.merkle_root}`)
+            await this._writeValue('hash', `${hash}`)
 
             // and the aggregate
             await this._writeValue('lastBlock', {
