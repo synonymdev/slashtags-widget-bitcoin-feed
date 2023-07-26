@@ -4,7 +4,6 @@ import { format, encode } from '@synonymdev/slashtags-url'
 import axios from 'axios'
 import logger from './logger.js'
 
-
 export default class BitcoinFeeds {
     constructor(config, schema) {
         this.config = config
@@ -27,8 +26,8 @@ export default class BitcoinFeeds {
         const driveKeys = await this.feedStorage.feed(this.driveId, { announce: true })
 
         // Write the images into the feed
-        const imageData = fs.readFileSync('./src/schemas/images/bitcoin.svg')
-        await this.feedStorage.ensureFile(this.driveId, '/images/bitcoin.svg', imageData)
+        const imageData = fs.readFileSync('./src/schemas/images/block.svg')
+        await this.feedStorage.ensureFile(this.driveId, '/images/block.svg', imageData)
 
         // this is the hyperdrive that will contain all the feed data
         const url = format(driveKeys.key, { protocol: 'slashfeed:', fragment: { encryptionKey: encode(driveKeys.encryptionKey) } })
@@ -52,7 +51,6 @@ export default class BitcoinFeeds {
     async stop() {
         clearTimeout(this.timer)
     }
-
 
     async getFilenames(path) {
         return new Promise(async (resolve) => {
@@ -118,6 +116,7 @@ export default class BitcoinFeeds {
             await this._writeValue('weight', `${weight}`)
             await this._writeValue('difficulty', `${difficulty}`)
             await this._writeValue('merkleRoot', `${blockInfo.merkle_root}`)
+            await this._writeValue('hash', `${hash}`)
 
             // and the aggregate
             await this._writeValue('lastBlock', {
@@ -128,9 +127,8 @@ export default class BitcoinFeeds {
                 weight,
                 difficulty,
                 hash,
-                merkleRoot: blockInfo.merkle_root
+                merkleRoot: blockInfo.merkle_root,
             })
-
         } catch (err) {
             logger.error(err)
         }
@@ -180,7 +178,7 @@ export default class BitcoinFeeds {
 
     _msToNextUnit(unit) {
         const now = Date.now()
-        const nextUnitStartsAt = Math.floor((Math.ceil(now / unit) * unit))
+        const nextUnitStartsAt = Math.floor(Math.ceil(now / unit) * unit)
 
         return nextUnitStartsAt - now
     }
