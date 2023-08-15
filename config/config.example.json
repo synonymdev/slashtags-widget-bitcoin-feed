@@ -1,0 +1,4 @@
+{
+  "storage": "./data/",
+  "relay": "https://web-relay.example.com"
+}

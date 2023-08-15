@@ -3,19 +3,31 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
+  "types": "types/index.d.ts",
   "scripts": {
-    "start": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin.js",
+    "test": "brittle test/*.js -cov",
+    "lint": "standard --fix --ignore example/*",
+    "build": "rm -rf types && tsc",
+    "fullcheck": "npm run lint && npm run build && npm run test",
+    "prepublishOnly": "npm run fullcheck"
   },
-  "author": "",
   "license": "MIT",
+  "files": [
+    "index.js",
+    "lib",
+    "types",
+    "!**/*.tsbuildinfo"
+  ],
   "dependencies": {
-    "@synonymdev/feeds": "^1.0.0-alpha.5",
-    "@synonymdev/slashtags-url": "^1.0.0-alpha.2",
-    "axios": "^0.27.2"
+    "@synonymdev/feeds": "github:synonymdev/slashtags-feeds#next",
+    "node-fetch": "^2.6.12"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "@synonymdev/web-relay": "github:slashtags/web-relay#dev",
+    "@types/node": "^20.4.9",
+    "brittle": "^3.3.2",
+    "standard": "^17.1.0",
+    "typescript": "^5.1.6"
   }
 }

@@ -1,0 +1,22 @@
+{
+    "name": "Bitcoin Blocks",
+    "description": "Examine various statistics on newly mined Bitcoin blocks.",
+    "icons": {
+        "48": "/images/block.svg",
+        "96": "/images/block.svg"
+    },
+    "type": "bitcoin.stats",
+    "version": "0.0.1",
+    "source": {
+        "name": "mempool.space",
+        "url": "https://www.mempool.space/"
+    },
+    "fields": [
+        {
+            "name": "Block",
+            "description": "Shows the current block information.",
+            "main": "/feed/latest-block",
+            "key": "height"
+        }
+    ]
+}
