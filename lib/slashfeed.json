@@ -13,7 +13,7 @@
     },
     "fields": [
         {
-            "name": "Height",
+            "name": "Block",
             "description": "Shows the current block height",
             "main": "/feed/height",
             "key": "height"
