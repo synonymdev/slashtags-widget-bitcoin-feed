@@ -57,7 +57,7 @@ test('immediate update', async (t) => {
   const tf = t.test('fields')
   tf.plan(9)
 
-  for (const field of reader.config.fields.slice(1)) {
+  for (const field of reader.config.fields) {
     const value = await reader.getField(field.key)
 
     tf.is(value, latestBlock[field.key], 'Field value matches ' + field.key)
