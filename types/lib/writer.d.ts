@@ -5,11 +5,11 @@ declare class BitcoinFeed extends Feed {
      * @param {ConstructorParameters<typeof Feed>[1]} config
      * @param {ConstructorParameters<typeof Feed>[2]} opts
      */
-    constructor(client: [client: import("@synonymdev/web-relay/types/lib/client/index"), config: Feed.Config, opts?: {
+    constructor(client: [client: import("@synonymdev/web-relay/types/lib/client"), config: Feed.Config, opts?: {
         icon?: Uint8Array;
-    }][0], config: [client: import("@synonymdev/web-relay/types/lib/client/index"), config: Feed.Config, opts?: {
+    }][0], config: [client: import("@synonymdev/web-relay/types/lib/client"), config: Feed.Config, opts?: {
         icon?: Uint8Array;
-    }][1], opts: [client: import("@synonymdev/web-relay/types/lib/client/index"), config: Feed.Config, opts?: {
+    }][1], opts: [client: import("@synonymdev/web-relay/types/lib/client"), config: Feed.Config, opts?: {
         icon?: Uint8Array;
     }][2]);
     _config: Feed.Config;

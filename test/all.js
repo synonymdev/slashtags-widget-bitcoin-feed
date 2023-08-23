@@ -40,11 +40,13 @@ test('immediate update', async (t) => {
 
   const readerClient = new Client({ storage: tmpdir() })
   const reader = new Reader(readerClient, feed.url)
+  await reader.ready()
 
-  t.alike(await reader.getConfig(), config)
-  t.alike(await reader.getIcon(), icon)
+  t.alike(reader.config, config)
+  t.alike(reader.icon, icon)
 
   const latestBlock = await reader.getBlockInfo()
+
   t.is(latestBlock.height, mocks.blockInfo.height)
   t.is(latestBlock.size, Number((mocks.blockInfo.size / 1024).toFixed(2)))
   t.is(latestBlock.timestamp, mocks.blockInfo.timestamp)
@@ -67,6 +69,8 @@ test('subscribe', async (t) => {
 
   const readerClient = new Client({ storage: tmpdir() })
   const reader = new Reader(readerClient, feed.url)
+
+  await reader.ready()
 
   const ts = t.test('subscribe')
   ts.plan(5)
