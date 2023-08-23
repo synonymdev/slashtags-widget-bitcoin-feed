@@ -52,6 +52,18 @@ test('immediate update', async (t) => {
   t.is(latestBlock.timestamp, mocks.blockInfo.timestamp)
   t.is(latestBlock.merkleRoot, mocks.blockInfo.merkle_root)
   t.is(latestBlock.transactionCount, mocks.blockInfo.tx_count)
+  t.is(latestBlock.difficulty, Number((mocks.blockInfo.difficulty / 1000000000000).toFixed(2)))
+
+  const tf = t.test('fields')
+  tf.plan(9)
+
+  for (const field of reader.config.fields.slice(1)) {
+    const value = await reader.getField(field.key)
+
+    tf.is(value, latestBlock[field.key], 'Field value matches ' + field.key)
+  }
+
+  await tf
 
   relay.close()
   await feed.close()
@@ -81,6 +93,7 @@ test('subscribe', async (t) => {
     ts.is(latestBlock.timestamp, mocks.blockInfo.timestamp)
     ts.is(latestBlock.merkleRoot, mocks.blockInfo.merkle_root)
     ts.is(latestBlock.transactionCount, mocks.blockInfo.tx_count)
+    t.is(latestBlock.difficulty, Number((mocks.blockInfo.difficulty / 1000000000000).toFixed(2)))
   })
 
   await ts
